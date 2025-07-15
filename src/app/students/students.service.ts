@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Student } from './student.entity';
 import { CreateStudentDto } from './dto/create-student.dto';
+import { ReadStudentDto } from './dto/read-student.dto';
 
 @Injectable()
 export class StudentsService {
@@ -16,11 +17,11 @@ export class StudentsService {
         return this.repo.save(student);
     }
 
-    findAll() {
+    findAll(): Promise<ReadStudentDto[]> {
         return this.repo.find();
     }
 
-    findOne(id: number) {
+    findOne(id: number): Promise<ReadStudentDto> {
         return this.repo.findOne({ where: { id } });
     }
 
