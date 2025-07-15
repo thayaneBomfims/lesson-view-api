@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { StudentsModule } from './app/students/students.module';
+import { ClassesModule } from './app/class/classes.module';
 
 @Module({
   imports: [
@@ -24,7 +25,8 @@ import { StudentsModule } from './app/students/students.module';
       } as TypeOrmModuleOptions),
     }),
 
-    StudentsModule
+    StudentsModule,
+    ClassesModule
   ],
   controllers: [],
   providers: [],
