@@ -3,6 +3,7 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { StudentsModule } from './app/students/students.module';
 import { ClassesModule } from './app/class/classes.module';
+import { WeekTimeModule } from './app/week-time/week-time.module';
 
 @Module({
   imports: [
@@ -26,7 +27,8 @@ import { ClassesModule } from './app/class/classes.module';
     }),
 
     StudentsModule,
-    ClassesModule
+    ClassesModule,
+    WeekTimeModule
   ],
   controllers: [],
   providers: [],

@@ -81,9 +81,6 @@ describe('ClassesService', () => {
         const result = await service.update(1, dto);
         expect(repo.update).toHaveBeenCalledWith(1, dto);
 
-        console.log('result', result)
-        console.log('class', classArray[0])
-
         expect(result).toEqual(classArray[0]);
     });
 
