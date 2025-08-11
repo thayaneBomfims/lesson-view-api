@@ -4,6 +4,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { StudentsModule } from './app/students/students.module';
 import { ClassesModule } from './app/class/classes.module';
 import { WeekTimeModule } from './app/week-time/week-time.module';
+import { ResponsibleModule } from './app/responsible/responsible.module';
 
 @Module({
   imports: [
@@ -28,7 +29,8 @@ import { WeekTimeModule } from './app/week-time/week-time.module';
 
     StudentsModule,
     ClassesModule,
-    WeekTimeModule
+    WeekTimeModule,
+    ResponsibleModule
   ],
   controllers: [],
   providers: [],

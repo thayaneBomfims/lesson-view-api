@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Responsible } from '../responsible/responsible.entity';
 
 @Entity()
 export class Student {
@@ -19,4 +20,7 @@ export class Student {
 
     @Column({ nullable: true })
     googleCode: string;
+
+    @OneToMany(() => Responsible, responsible => responsible.student)
+    responsibles: Responsible[];
 }
