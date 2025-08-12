@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { StudentClass } from '../student-class/student-class.entity';
 
 export enum ClassType {
     VIRTUAL = 'online',
@@ -19,4 +20,8 @@ export class Class {
 
     @Column('decimal', { precision: 10, scale: 2 })
     price: number;
+
+    @OneToMany(() => StudentClass, (sc) => sc.class)
+    studentClasses: StudentClass[];
+
 }

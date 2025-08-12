@@ -5,6 +5,7 @@ import { StudentsModule } from './app/students/students.module';
 import { ClassesModule } from './app/class/classes.module';
 import { WeekTimeModule } from './app/week-time/week-time.module';
 import { ResponsibleModule } from './app/responsible/responsible.module';
+import { StudentClassModule } from './app/student-class/student-class.module';
 
 @Module({
   imports: [
@@ -30,7 +31,8 @@ import { ResponsibleModule } from './app/responsible/responsible.module';
     StudentsModule,
     ClassesModule,
     WeekTimeModule,
-    ResponsibleModule
+    ResponsibleModule,
+    StudentClassModule
   ],
   controllers: [],
   providers: [],

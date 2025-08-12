@@ -14,6 +14,7 @@ const studentMock: Student = {
   email: 'maria@example.com',
   googleCode: 'abc123',
   responsibles: [],
+  studentClasses: [],
 };
 
 const responsibleArray: Responsible[] = [
