@@ -7,6 +7,7 @@ import { WeekTimeModule } from './app/week-time/week-time.module';
 import { ResponsibleModule } from './app/responsible/responsible.module';
 import { StudentClassModule } from './app/student-class/student-class.module';
 import { StudentClassWeekTimeModule } from './app/student-class-week-time/student-class-week-time.module';
+import { StudentClassHistoricalModule } from './app/student-class-historical/student-class-historical.module';
 
 @Module({
   imports: [
@@ -34,7 +35,8 @@ import { StudentClassWeekTimeModule } from './app/student-class-week-time/studen
     WeekTimeModule,
     ResponsibleModule,
     StudentClassModule,
-    StudentClassWeekTimeModule
+    StudentClassWeekTimeModule,
+    StudentClassHistoricalModule
   ],
   controllers: [],
   providers: [],
