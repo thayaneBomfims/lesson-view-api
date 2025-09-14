@@ -6,6 +6,7 @@ import {
     CreateDateColumn,
     Unique,
     JoinColumn,
+    Column,
 } from 'typeorm';
 import { StudentClass } from '../student-class/student-class.entity';
 import { WeekTime } from '../week-time/week-time.entity';
@@ -23,6 +24,12 @@ export class StudentClassWeekTime {
     @ManyToOne(() => WeekTime, (wt) => wt.id, { onDelete: 'CASCADE', eager: true })
     @JoinColumn({ name: 'week_time_id' })
     weekTime: WeekTime;
+
+    @Column({ type: 'int', default: 4 })
+    totalLessons: number;
+
+    @Column({ type: 'int', default: 0 })
+    completedLessons: number;
 
     @CreateDateColumn()
     created_at: Date;

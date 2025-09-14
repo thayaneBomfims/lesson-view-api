@@ -1,5 +1,5 @@
 // src/student-class-week-time/dto/create-student-class-week-time.dto.ts
-import { IsInt } from 'class-validator';
+import { IsInt, IsOptional } from 'class-validator';
 
 export class CreateStudentClassWeekTimeDto {
     @IsInt()
@@ -7,4 +7,8 @@ export class CreateStudentClassWeekTimeDto {
 
     @IsInt()
     weekTimeId: number;
+
+    @IsOptional()
+    @IsInt()
+    totalLessons?: number;
 }

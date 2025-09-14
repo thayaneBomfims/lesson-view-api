@@ -5,6 +5,7 @@ import { StudentClassHistorical } from './student-class-historical.entity';
 import { CreateStudentClassHistoricalDto } from './dto/create-student-class-historical.dto';
 import { UpdateStudentClassHistoricalDto } from './dto/update-student-class-historical.dto';
 import { StudentClass } from '../student-class/student-class.entity';
+import { StudentClassWeekTime } from '../student-class-week-time/student-class-week-time.entity';
 
 
 @Injectable()
@@ -15,6 +16,9 @@ export class StudentsClassHistoricalService {
 
     @InjectRepository(StudentClass)
     private readonly scRepo: Repository<StudentClass>,
+
+    @InjectRepository(StudentClassWeekTime)
+    private readonly scwtRepo: Repository<StudentClassWeekTime>,
   ) { }
 
   async create(dto: CreateStudentClassHistoricalDto) {
@@ -29,7 +33,16 @@ export class StudentsClassHistoricalService {
       homework: dto.homework,
     });
 
-    return this.repo.save(historical);
+    const saved = await this.repo.save(historical);
+
+    // Atualiza completedLessons do vínculo StudentClassWeekTime
+    const link = await this.scwtRepo.findOne({ where: { studentClass: { id: studentClass.id } } });
+    if (link) {
+      link.completedLessons += 1;
+      await this.scwtRepo.save(link);
+    }
+
+    return saved;
   }
 
   findAll(studentClassId?: number) {

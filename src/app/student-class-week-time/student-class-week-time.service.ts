@@ -42,7 +42,7 @@ export class StudentClassWeekTimeService {
     weekTime.available = false;
     await this.wtRepo.save(weekTime);
 
-    const link = this.repo.create({ studentClass, weekTime });
+    const link = this.repo.create({ studentClass, weekTime, totalLessons: dto.totalLessons ?? 4 });
     return this.repo.save(link);
   }
 

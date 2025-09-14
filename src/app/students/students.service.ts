@@ -17,12 +17,25 @@ export class StudentsService {
         return this.repo.save(student);
     }
 
-    findAll(): Promise<ReadStudentDto[]> {
+    findAll(email?: string): Promise<ReadStudentDto[]> {
+        if (email) {
+            return this.repo.find({ where: { email } });
+        }
         return this.repo.find();
     }
 
-    findOne(id: number): Promise<ReadStudentDto> {
-        return this.repo.findOne({ where: { id } });
+    findOne(id: number): Promise<Student> {
+        return this.repo.findOne({
+            where: { id },
+            relations: [
+                'responsibles',
+                'studentClasses',
+                'studentClasses.class',
+                'studentClasses.studentClassWeekTimes',
+                'studentClasses.studentClassWeekTimes.weekTime',
+                'studentClasses.studentClassHistoricals'
+            ]
+        });
     }
 
     async update(id: number, data: Partial<CreateStudentDto>) {
