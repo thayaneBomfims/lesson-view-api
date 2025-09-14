@@ -26,7 +26,9 @@ import { StudentClassHistoricalModule } from './app/student-class-historical/stu
         database: configService.get('DB_DATABASE', 'lesson_view'),
         entities: [__dirname + '/**/*.entity{.js,.ts}'],
         synchronize: true,
-        ssl: false,
+        ssl: {
+          rejectUnauthorized: false,
+        }
       } as TypeOrmModuleOptions),
     }),
 
